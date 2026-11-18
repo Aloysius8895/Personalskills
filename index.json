@@ -1,0 +1,18 @@
+[
+  {
+    "name": "agent-proof-codebase",
+    "purpose": "在仓库里为 AI 编程代理建立可强制执行的护栏（API/架构、lint、类型、测试与验证），把反复出现的错误做成确定性检查，而不是只写进散文规则。",
+    "sources": [
+      {
+        "id": "O_zcc6Xl12g",
+        "url": "https://www.youtube.com/watch?v=O_zcc6Xl12g"
+      }
+    ],
+    "test": {
+      "status": "passed",
+      "task": "搭建一个小型 Python 任务清单模块，模拟代理用光秃秃的 except: 吞掉 I/O 错误；按技能的纠正流程写成自定义 AST lint（tools/lint_no_bare_except.py），而不是只写散文规则。",
+      "result": "lint 在 fixtures/tasks_bad.py 上退出码 1，于第 12、20 行各报一处 bare except；在修复后的 fixtures/tasks_good.py 上退出码 0。修复后的 load/save/add 功能测试通过，损坏 JSON 不再被静默吞掉。"
+    },
+    "updated": "2026-11-19"
+  }
+]
