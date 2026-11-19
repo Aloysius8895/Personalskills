@@ -16,18 +16,22 @@
     "updated": "2026-11-19"
   },
   {
-    "name": "agent-unit-test-backfill-pipeline",
-    "purpose": "为现有代码库搭建由编码代理批量补写单元测试、再经质量门禁和人工审批合并的流水线，并把拒绝理由回写进测试规则。",
+    "name": "agent-code-verification-and-maintenance",
+    "purpose": "在编码代理大规模改代码时同时处理验证与长期维护：用流水线批量补测并经人审批，再用切片约束、prose 工程化和每周清扫控制混乱。",
     "sources": [
       {
         "id": "D_4Rn6uLdQM",
         "url": "https://www.youtube.com/watch?v=D_4Rn6uLdQM"
+      },
+      {
+        "id": "oeknLUsN_GE",
+        "url": "https://www.youtube.com/watch?v=oeknLUsN_GE"
       }
     ],
     "test": {
       "status": "passed",
-      "task": "搭建一个小型未测 Python 商店模块（定价、库存、订单仓库，另有 views、遗留模块和超 800 行报表文件）；按 skill 的 identify → write → verify → resolve 循环跑 selector、补写 pytest、质量三层防线和 PR 状态机。",
-      "result": "基线切片覆盖率 0%、整体 0.74%。selector 选出三个切片文件，并跳过 UI 与大文件。改生产代码的 PR 被确定性规则关闭；含 time.sleep 或 skip 已有测试的 PR 被 judge 拒绝并写明理由；只改 tests/ 的 PR 通过且本地 pytest 全绿，切片覆盖率升至 100%、整体 10.62%。状态机对 8 个夹具 PR 分别做出指派、跳过、关闭过期/冲突、修复上限、冷却和再修复，与预期一致。"
+      "task": "A 部分复用并重跑上一轮小型未测 Python 商店的补测流水线（selector、pytest、质量三层防线、PR 状态机）。B 部分另建一个两国切片的「已审批订单改金额」小系统，按 B1–B9 跑切片约束、prose 变异测试与 lint、限额漂移检查、写路径与幂等 journal、历史回放 blast radius、重构丢分支检测、以及带证据的每周清扫。",
+      "result": "A 部分步骤与旧 skill 正文一致，重跑仍通过：切片覆盖率 0%→100%，整体 0.74%→10.62%，快捷方式 PR 被关闭或拒绝。B 部分通过：跨 slice 无理由改动被拒；改坏 prose 限额时存在性测试仍绿、对照决策表则变红；代码硬编码 1000 与表内 1500 的漂移被检出；写路径 journal 使重试幂等；新检查在 20 条冻结任务上的 blast radius 为 1/20；丢掉「金额超限」分支的重构被标出；未出现过的分支标为无证据；未使用的遗留变体附证据退役，ratchet gauge 只降不升。"
     },
     "updated": "2026-11-19"
   }
