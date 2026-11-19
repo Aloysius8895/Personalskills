@@ -1,7 +1,7 @@
 [
   {
-    "name": "agent-proof-codebase",
-    "purpose": "在仓库里为 AI 编程代理建立可强制执行的护栏（API/架构、lint、类型、测试与验证），把反复出现的错误做成确定性检查，而不是只写进散文规则。",
+    "name": "agent-environment-design",
+    "purpose": "判断 AI 编程代理的护栏该放哪一层（API/架构、lint/类型/测试、运行时与形式化验证、散文），把反复纠正沉淀成确定性检查，并在搭软件工厂前先打牢内层地基。",
     "sources": [
       {
         "id": "O_zcc6Xl12g",
@@ -10,10 +10,10 @@
     ],
     "test": {
       "status": "passed",
-      "task": "搭建一个小型 Python 任务清单模块，模拟代理用光秃秃的 except: 吞掉 I/O 错误；按技能的纠正流程写成自定义 AST lint（tools/lint_no_bare_except.py），而不是只写散文规则。",
-      "result": "lint 在 fixtures/tasks_bad.py 上退出码 1，于第 12、20 行各报一处 bare except；在修复后的 fixtures/tasks_good.py 上退出码 0。修复后的 load/save/add 功能测试通过，损坏 JSON 不再被静默吞掉。"
+      "task": "搭一个类 Electron 的小型 JS 项目（app/main 与 app/renderer），模拟代理反复用 setTimeout/requestAnimationFrame 打补丁、写辩解注释、在 renderer 里导入 main 代码；按 §3 纠正流程依次做：架构改动（IPC 桥 + 声明式 store 作正确范例）、带三段式根因文案的确定性 lint（tools/lint-agent-env.js）、拦新并清旧、用反例确认检查生效、再加运行时验证。",
+      "result": "清理前 lint 退出码 1，报 5 处（3 处计时器补丁、1 处跨边界导入、1 处辩解注释）；清理后 app/ 退出码 0；新写的反例 fixture 被拦 3 处、退出码 1；运行时测试同步通过，输出 [\"\",\"badge:0\",\"a,b\",\"badge:2\"]，无需计时器。"
     },
-    "updated": "2026-11-19"
+    "updated": "2026-11-20"
   },
   {
     "name": "agent-code-verification-and-maintenance",

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-20
+
+- Replaced `skills/agent-proof-codebase` with `skills/agent-environment-design`, a rebuild of the same talk (*All Code Is Slop (Except Mine)*, Lauren Tan, video `O_zcc6Xl12g`) made with Claude skill-creator and reviewed with writing-for-agents. The old `agent-proof-codebase` directory is removed. The new skill points to the separate upstream skill `agent-proof-codebase` at https://github.com/cassandre60/skills for gate building, and keeping a different skill with the same name here would clash with that.
+- Tested the new skill on a tiny Electron-style JS project: a root-cause lint caught 5 timer patches, cross-boundary imports, and justification comments; cleanup made it pass; a new counterexample was blocked; a runtime test passed without timers.
+
 ## 2026-11-19
 
 - Added `skills/agent-proof-codebase` from the talk *All Code Is Slop (Except Mine)* by Lauren Tan (AI Engineer, video `O_zcc6Xl12g`).
