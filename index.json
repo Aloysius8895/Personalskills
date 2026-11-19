@@ -14,5 +14,21 @@
       "result": "lint 在 fixtures/tasks_bad.py 上退出码 1，于第 12、20 行各报一处 bare except；在修复后的 fixtures/tasks_good.py 上退出码 0。修复后的 load/save/add 功能测试通过，损坏 JSON 不再被静默吞掉。"
     },
     "updated": "2026-11-19"
+  },
+  {
+    "name": "agent-unit-test-backfill-pipeline",
+    "purpose": "为现有代码库搭建由编码代理批量补写单元测试、再经质量门禁和人工审批合并的流水线，并把拒绝理由回写进测试规则。",
+    "sources": [
+      {
+        "id": "D_4Rn6uLdQM",
+        "url": "https://www.youtube.com/watch?v=D_4Rn6uLdQM"
+      }
+    ],
+    "test": {
+      "status": "passed",
+      "task": "搭建一个小型未测 Python 商店模块（定价、库存、订单仓库，另有 views、遗留模块和超 800 行报表文件）；按 skill 的 identify → write → verify → resolve 循环跑 selector、补写 pytest、质量三层防线和 PR 状态机。",
+      "result": "基线切片覆盖率 0%、整体 0.74%。selector 选出三个切片文件，并跳过 UI 与大文件。改生产代码的 PR 被确定性规则关闭；含 time.sleep 或 skip 已有测试的 PR 被 judge 拒绝并写明理由；只改 tests/ 的 PR 通过且本地 pytest 全绿，切片覆盖率升至 100%、整体 10.62%。状态机对 8 个夹具 PR 分别做出指派、跳过、关闭过期/冲突、修复上限、冷却和再修复，与预期一致。"
+    },
+    "updated": "2026-11-19"
   }
 ]
